@@ -142,7 +142,7 @@ class GPURBFEll(object):
         self.module = SourceModule(module_code,keep=True,no_extern_c=True)
         
         (g_gamma,gsize)=self.module.get_global('GAMMA')       
-        cuda.memcpy_htod(g_gamma, np.float32(self.Gamma) )
+        cuda.memcpy_htod(g_gamma, np.asarray(np.float32(self.Gamma)) )
         
         #get functions reference
 
